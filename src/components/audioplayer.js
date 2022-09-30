@@ -73,8 +73,8 @@ const AudioPlayer = ({ tracks }) => {
           src={image}
           alt={`track artwork for ${title} by ${artist}`}
         />
-        <h2 className="title">{title}</h2>
-        <h3 className="artist">{artist}</h3>
+        <h5 className="title mt-4">{title}</h5>
+        <p className="artist">{artist}</p>
         <AudioControls
           isPlaying={isPlaying}
           onPlayPauseClick={setIsPlaying}

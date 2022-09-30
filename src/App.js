@@ -5,9 +5,14 @@ import tracks from "./components/tracks";
 
 function App() {
   return (
-    <div className="App">
-      <AudioPlayer tracks={tracks}/>
-      <Playlist />
+    <div className="App container-fluid">
+      <div className='row'>
+        <div className='col'>
+          <AudioPlayer tracks={tracks} />
+          <Playlist />
+        </div>
+      </div>
+
     </div>
   );
 }

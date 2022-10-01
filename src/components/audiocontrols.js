@@ -12,7 +12,7 @@ const AudioControls = ({
             className='prev'
             onClick={onPrevClick}
         >
-            <i class="fa-solid fa-backward"></i>
+            <i className="fa-solid fa-backward"></i>
         </button>
         {isPlaying ? (
             <button
@@ -20,14 +20,14 @@ const AudioControls = ({
                 className='pause'
                 onClick={() => onPlayPauseClick(false)}
             >
-                <i class="fa-solid fa-pause"></i>
+                <i className="fa-solid fa-pause"></i>
             </button>) : (
             <button
                 type='button'
                 className='play'
                 onClick={() => onPlayPauseClick(true)}
             >
-                <i class="fa-solid fa-play"></i>
+                <i className="fa-solid fa-play"></i>
             </button>
         )}
         <button
@@ -35,7 +35,7 @@ const AudioControls = ({
             className="next"
             onClick={onNextClick}
         >
-            <i class="fa-solid fa-forward"></i>
+            <i className="fa-solid fa-forward"></i>
         </button>
     </div>
 )

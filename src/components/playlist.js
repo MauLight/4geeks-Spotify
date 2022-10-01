@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 function Playlist() {
 
     const [songs, setSongs] = useState([]);
+    
 
     useEffect(() => {
 
@@ -38,7 +39,10 @@ function Playlist() {
             {
                 !!songs && songs.length > 0 && songs.map((song, i) => {
                     return (
-                        <li className='list-group-item' type='button' onClick={() => console.log(song.url)}
+                        <li className='list-group-item' type='button' onClick={() => {
+                            const audioRef = new Audio(`https://assets.breatheco.de/apis/sound/${song.url}`);
+                            audioRef.play();
+                        } }
                             key={i}>
                             {song.name}
                         </li>

@@ -10,11 +10,13 @@ const AudioPlayer = ({ songs }) => {
 
   const { id, category, name, url } = songs[trackIndex];
 
-  const audioRef = useRef(new Audio(`https://assets.breatheco.de/apis/sound/${url}`)); //audio element created via audio constructor (new Audio).
+  const audioRef = new Audio(`https://assets.breatheco.de/apis/sound/${url}`); //audio element created via audio constructor (new Audio).
   const intervalRef = useRef(); //reference to a setInterval timer.
   const isReady = useRef(false); //boolean to determine when certain actions are ready to be run.
 
-  const toPrevTrack = () => { //goes to the previous track
+  console.log(url);
+
+  const toPrevTrack = () => { 
     if(trackIndex - 1 < 0) {
       setTrackIndex(songs.length - 1);
     }
@@ -23,7 +25,7 @@ const AudioPlayer = ({ songs }) => {
     }
   }
 
-  const toNextTrack = () => { //goes to the next track
+  const toNextTrack = () => { 
     if(trackIndex < songs.length - 1) {
       setTrackIndex(trackIndex + 1);
     }
@@ -31,25 +33,31 @@ const AudioPlayer = ({ songs }) => {
       setTrackIndex(0);
     }
   }
-
   
+  useEffect(() => {
+    if (isPlaying) {
+      audioRef.play();
+    } else {
+      audioRef.pause();
+    }
+  }, [isPlaying]);
 
 
   useEffect(() => {
     return () => {
-      audioRef.current.pause();
+      audioRef.pause();
       clearInterval(intervalRef.current);
     }
   }, []);
 
   useEffect(() => {
-    audioRef.current.pause();
+    audioRef.pause();
   
     audioRef.current = new Audio(url);
     setTrackProgress(audioRef.current.currentTime);
   
     if (isReady.current) {
-      audioRef.current.play();
+      audioRef.play();
       setIsPlaying(true);
       //startTimer();
     } else {
@@ -59,13 +67,12 @@ const AudioPlayer = ({ songs }) => {
 
 
 
-  //note that the items in the destructured object are used in the rendering as information.
   return (
     <div className="audio-player">
       <div className="track-info">
         <img
           className="artwork"
-          src={'...'}
+          src={'https://mir-s3-cdn-cf.behance.net/project_modules/fs/3524ba70148279.5e9e1a288e349.png'}
           alt={'...'}
         />
         <h5 className="title mt-4">{name}</h5>

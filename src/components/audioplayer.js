@@ -2,21 +2,21 @@ import React, { useEffect, useState, useRef } from 'react';
 import AudioControls from './audiocontrols';
 import '../../src/App.css';
 
-const AudioPlayer = ({ tracks }) => {
+const AudioPlayer = ({ songs }) => {
 
   const [trackIndex, setTrackIndex] = useState(0);
   const [trackProgress, setTrackProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const { title, artist, color, image, audioSrc } = tracks[trackIndex];
+  const { id, category, name, url } = songs[trackIndex];
 
-  const audioRef = useRef(new Audio(audioSrc)); //audio element created via audio constructor (new Audio).
+  const audioRef = useRef(new Audio(`https://assets.breatheco.de/apis/sound/${url}`)); //audio element created via audio constructor (new Audio).
   const intervalRef = useRef(); //reference to a setInterval timer.
   const isReady = useRef(false); //boolean to determine when certain actions are ready to be run.
 
   const toPrevTrack = () => { //goes to the previous track
     if(trackIndex - 1 < 0) {
-      setTrackIndex(tracks.length - 1);
+      setTrackIndex(songs.length - 1);
     }
     else {
       setTrackIndex(trackIndex - 1)
@@ -24,7 +24,7 @@ const AudioPlayer = ({ tracks }) => {
   }
 
   const toNextTrack = () => { //goes to the next track
-    if(trackIndex < tracks.length - 1) {
+    if(trackIndex < songs.length - 1) {
       setTrackIndex(trackIndex + 1);
     }
     else {
@@ -32,13 +32,8 @@ const AudioPlayer = ({ tracks }) => {
     }
   }
 
-  useEffect(() => {
-    if (isPlaying) {
-      audioRef.current.play();
-    } else {
-      audioRef.current.pause();
-    }
-  }, [isPlaying]);
+  
+
 
   useEffect(() => {
     return () => {
@@ -50,7 +45,7 @@ const AudioPlayer = ({ tracks }) => {
   useEffect(() => {
     audioRef.current.pause();
   
-    audioRef.current = new Audio(audioSrc);
+    audioRef.current = new Audio(url);
     setTrackProgress(audioRef.current.currentTime);
   
     if (isReady.current) {
@@ -70,11 +65,11 @@ const AudioPlayer = ({ tracks }) => {
       <div className="track-info">
         <img
           className="artwork"
-          src={image}
-          alt={`track artwork for ${title} by ${artist}`}
+          src={'...'}
+          alt={'...'}
         />
-        <h5 className="title mt-4">{title}</h5>
-        <p className="artist">{artist}</p>
+        <h5 className="title mt-4">{name}</h5>
+        <p className="artist">{category}</p>
         <AudioControls
           isPlaying={isPlaying}
           onPlayPauseClick={setIsPlaying}

@@ -36,7 +36,7 @@ input[type="range"] {
 }
 
 .audio-player {
-  max-width: 350px;
+  max-width: 270px;
   padding: 24px;
   border-radius: 20px;
   box-shadow: 0 28px 28px rgba(0, 0, 0, 0.2);
@@ -126,10 +126,10 @@ ul{
 
 .audio-player2 {
   max-width: 350px;
-  padding: 24px;
+
   border-radius: 20px;
   /*box-shadow: 28px 28px 0 rgba(0, 0, 0, 0.2);*/
-  margin: auto;
+
   color: var(--white);
   list-style: none;
 }

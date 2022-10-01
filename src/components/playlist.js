@@ -34,11 +34,11 @@ function Playlist() {
 
 
     return (
-        <ul className='audio-player2 list-group'>
+        <ul className='audio-player2 list-group d-block mx-auto mt-5'>
             {
                 !!songs && songs.length > 0 && songs.map((song, i) => {
                     return (
-                        <li className='list-group-item' type='button' onClick={console.log(song.url)}
+                        <li className='list-group-item' type='button' onClick={() => console.log(song.url)}
                             key={i}>
                             {song.name}
                         </li>

@@ -1,9 +1,10 @@
 import goldn from '../mp3/goldn-116392.mp3';
 import leonell from '../mp3/leonell-cassio-the-blackest-bouquet-118766.mp3';
 import lofi from '../mp3/lofi-study-112191.mp3';
-import imgSrc1 from '../mp3/1.webp' 
-import imgSrc2 from '../mp3/2.webp' 
-import imgSrc3 from '../mp3/3.webp' 
+import imgSrc1 from '../mp3/1.webp';
+import imgSrc2 from '../mp3/2.webp';
+import imgSrc3 from '../mp3/3.webp'; 
+//import mario from 'https://assets.breatheco.de/apis/sound/files/mario/songs/castle.mp3';
 
 // All of these artists are at https://pixabay.com/music/search/mood/laid%20back/
 export default [
